@@ -1,0 +1,13 @@
+{
+  "name": "fiverr-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js/server.js",
+  "scripts": {
+    "start": "node server.js/server.js"
+  },
+  "dependencies": {
+    "mysql2": "^3.23.3",
+    "swagger-ui-dist": "^5.32.13"
+  }
+}

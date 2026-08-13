@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  fiverr-api:
+    image: node:18-alpine
+    container_name: fiverr_nodejs_api
+    working_dir: /app
+    ports: 
+      - "8080:8080"
+    volumes: 
+      - .:/app
+      - /app/node_modules
+      # Ép buộc đồng bộ file trực tiếp để tránh lỗi tệp tin trống trên Windows
+      - ./server.js:/app/server.js
+      - ./index.html:/app/index.html
+    environment:
+      - PORT=8080
+      - DB_HOST=host.docker.internal 
+      - DB_PASSWORD=12345
+      - DB_NAME=Fiverr
+      - DB_PORT=3307
+    command: >
+      sh -c "npm install && node server.js"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: on-failure
