@@ -239,13 +239,13 @@ const server = http.createServer((req, res) => {
     return res.end();
   }
 
-  // Tuyến đường 1: Trả về file cấu hình JSON Swagger
+  //  Trả về file cấu hình JSON Swagger
   if (urlPath === "/swagger.json") {
     res.writeHead(200, { "Content-Type": "application/json" });
     return res.end(JSON.stringify(swaggerDocument));
   }
 
-  // ⭐ TUYẾN ĐƯỜNG KIỂM THỬ: TỰ ĐỘNG CHÈN 3 BÌNH LUẬN VÀ 1 LOẠI CÔNG VIỆC MẪU
+  // KIỂM THỬ: TỰ ĐỘNG CHÈN 3 BÌNH LUẬN VÀ 1 LOẠI CÔNG VIỆC MẪU
   if (urlPath === "/init-data" && method === "GET") {
     const comments = [
       [1, 1, "2026-08-01", "Dịch vụ rất chuyên nghiệp", 5],
@@ -486,7 +486,7 @@ function serveSwaggerUI(req, res, urlPath) {
         return res.end("Không tìm thấy file Swagger UI");
       }
 
-      // Ép Swagger UI đọc cấu hình file JSON động từ API của bạn thay vì file mẫu của họ
+      // Ép Swagger UI đọc cấu hình file JSON động từ API
       if (filename === "swagger-initializer.js") {
         let script = data.toString();
         script = script.replace(/url:\s*["'].*?["']/g, 'url: "/swagger.json"');
