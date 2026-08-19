@@ -2,10 +2,14 @@
   "version": 2,
   "cleanUrls": true,
   "trailingSlash": false,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/swagger/(.*)",
-      "dest": "/swagger/$1"
+      "source": "/",
+      "destination": "/swagger/index.html"
+    },
+    {
+      "source": "/swagger/(.*)",
+      "destination": "/swagger/$1"
     }
   ]
 }
