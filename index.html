@@ -30,7 +30,7 @@
     <script>
       window.onload = function () {
         window.ui = SwaggerUIBundle({
-          url: "/swagger.json",
+          url: "./swagger.yaml", // Đổi từ .json sang .yaml tại đây
           dom_id: "#swagger-ui",
           deepLinking: true,
           presets: [SwaggerUIBundle.presets.apis, SwaggerUIStandalonePreset],
