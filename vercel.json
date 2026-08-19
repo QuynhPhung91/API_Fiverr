@@ -1,5 +1,12 @@
 {
   "version": 2,
+  "public": true,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "routes": [
+    {
+      "src": "/swagger/(.*)",
+      "dest": "/swagger/$1"
+    }
+  ]
 }
