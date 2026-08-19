@@ -1,15 +1,5 @@
 {
   "version": 2,
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/swagger/index.html"
-    },
-    {
-      "source": "/swagger/(.*)",
-      "destination": "/swagger/$1"
-    }
-  ]
+  "trailingSlash": false
 }
