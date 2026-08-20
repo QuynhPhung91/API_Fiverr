@@ -1,0 +1,529 @@
+openapi: 3.0.0
+info:
+  title: Fiverr Node.js API thuần - Full Tables
+  version: 1.0.0
+  description: Hệ thống quản lý đầy đủ 6 bảng dữ liệu Fiverr tự động đồng bộ
+servers:
+  - url: /
+paths:
+  /init-data:
+    get:
+      summary: Tự động chạy code thêm 3 bình luận và thêm 1 loại công việc mới
+      responses:
+        "200":
+          description: Khởi tạo dữ liệu thành công
+      tags:
+        - init-data
+  /binh-luan/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Bình Luận
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - binh-luan
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Bình Luận
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - binh-luan
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                noi_dung:
+                  type: string
+                sao_binh_luan:
+                  type: integer
+            example:
+              noi_dung: string
+              sao_binh_luan: 9067
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Bình Luận
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - binh-luan
+        - "{id}"
+  /binh-luan:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Bình Luận
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - binh-luan
+    post:
+      summary: Thêm bản ghi mới vào bảng Bình Luận
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - binh-luan
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ma_cong_viec:
+                  type: integer
+                ma_nguoi_binh_luan:
+                  type: integer
+                ngay_binh_luan:
+                  type: string
+                noi_dung:
+                  type: string
+                sao_binh_luan:
+                  type: integer
+            example:
+              ma_cong_viec: 8510
+              ma_nguoi_binh_luan: 1939
+              ngay_binh_luan: string
+              noi_dung: string
+              sao_binh_luan: 4750
+  /chi-tiet-loai-cong-viec/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Chi Tiết Loại Công Việc
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - chi-tiet-loai-cong-viec
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Chi Tiết Loại Công Việc
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - chi-tiet-loai-cong-viec
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_chi_tiet:
+                  type: string
+                hinh_anh:
+                  type: string
+            example:
+              ten_chi_tiet: string
+              hinh_anh: string
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Chi Tiết Loại Công Việc
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - chi-tiet-loai-cong-viec
+        - "{id}"
+  /chi-tiet-loai-cong-viec:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Chi Tiết Loại Công Việc
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - chi-tiet-loai-cong-viec
+    post:
+      summary: Thêm bản ghi mới vào bảng Chi Tiết Loại Công Việc
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - chi-tiet-loai-cong-viec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_chi_tiet:
+                  type: string
+                hinh_anh:
+                  type: string
+                ma_loai_cong_viec:
+                  type: integer
+            example:
+              ten_chi_tiet: string
+              hinh_anh: string
+              ma_loai_cong_viec: 2132
+  /cong-viec/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Công Việc
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - cong-viec
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Công Việc
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - cong-viec
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_cong_viec:
+                  type: string
+                gia_tien:
+                  type: integer
+                mo_ta:
+                  type: string
+            example:
+              ten_cong_viec: string
+              gia_tien: 8791
+              mo_ta: string
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Công Việc
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - cong-viec
+        - "{id}"
+  /cong-viec:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Công Việc
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - cong-viec
+    post:
+      summary: Thêm bản ghi mới vào bảng Công Việc
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - cong-viec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_cong_viec:
+                  type: string
+                danh_gia:
+                  type: integer
+                gia_tien:
+                  type: integer
+                hinh_anh:
+                  type: string
+                mo_ta:
+                  type: string
+                ma_chi_tiet_loai:
+                  type: integer
+                sao_cong_viec:
+                  type: integer
+            example:
+              ten_cong_viec: string
+              danh_gia: 6614
+              gia_tien: 9155
+              hinh_anh: string
+              mo_ta: string
+              ma_chi_tiet_loai: 1431
+              sao_cong_viec: 6796
+  /loai-cong-viec/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Loại Công Việc
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - loai-cong-viec
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Loại Công Việc
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - loai-cong-viec
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_loai_cong_viec:
+                  type: string
+            example:
+              ten_loai_cong_viec: string
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Loại Công Việc
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - loai-cong-viec
+        - "{id}"
+  /loai-cong-viec:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Loại Công Việc
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - loai-cong-viec
+    post:
+      summary: Thêm bản ghi mới vào bảng Loại Công Việc
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - loai-cong-viec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ten_loai_cong_viec:
+                  type: string
+            example:
+              ten_loai_cong_viec: string
+  /thue-cong-viec/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Thuê Công Việc
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - thue-cong-viec
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Thuê Công Việc
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - thue-cong-viec
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                hoan_thanh:
+                  type: boolean
+            example:
+              hoan_thanh: false
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Thuê Công Việc
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - thue-cong-viec
+        - "{id}"
+  /thue-cong-viec:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Thuê Công Việc
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - thue-cong-viec
+    post:
+      summary: Thêm bản ghi mới vào bảng Thuê Công Việc
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - thue-cong-viec
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ma_cong_viec:
+                  type: integer
+                ma_nguoi_thue:
+                  type: integer
+                ngay_thue:
+                  type: string
+                hoan_thanh:
+                  type: boolean
+            example:
+              ma_cong_viec: 176
+              ma_nguoi_thue: 7534
+              ngay_thue: string
+              hoan_thanh: true
+  /users/{id}:
+    get:
+      summary: Lấy chi tiết bản ghi theo ID từ bảng Users
+      responses:
+        "200":
+          description: Thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - users
+        - "{id}"
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        example: 2076
+    put:
+      summary: Cập nhật bản ghi theo ID trong bảng Users
+      responses:
+        "200":
+          description: Cập nhật thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - users
+        - "{id}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+            example:
+              name: string
+              email: string
+              phone: string
+    delete:
+      summary: Xóa bản ghi theo ID khỏi bảng Users
+      responses:
+        "200":
+          description: Xóa thành công
+        "404":
+          description: Không tìm thấy
+      tags:
+        - users
+        - "{id}"
+  /users:
+    get:
+      summary: Lấy danh sách dữ liệu từ bảng Users
+      responses:
+        "200":
+          description: Thành công
+      tags:
+        - users
+    post:
+      summary: Thêm bản ghi mới vào bảng Users
+      responses:
+        "201":
+          description: Tạo mới thành công
+      tags:
+        - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                phone:
+                  type: string
+                role:
+                  type: string
+            example:
+              name: string
+              email: string
+              password: string
+              phone: string
+              role: string
