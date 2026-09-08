@@ -1,12 +1,11 @@
-version: '3.8'
 
 services:
   fiverr-api:
-    image: node:18-alpine
+    image: node:latest
     container_name: fiverr_nodejs_api
     working_dir: /app
     ports: 
-      - "8080:8080"
+      - "8080:8080" 
     volumes: 
       - .:/app
       - /app/node_modules
