@@ -7,6 +7,7 @@
     "start": "node server.js/server.js"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "mysql2": "^3.23.3",
     "swagger-ui-dist": "^5.32.13"
   }
